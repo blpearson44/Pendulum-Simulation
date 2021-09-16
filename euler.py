@@ -32,7 +32,6 @@ def simulate(index, dt, itor):
     # Add initial values
     theta.append(angle[index])
     alpha.append(alpha_next(0))
-    error.append(0)
     for i in range(N):
         theta.append(theta_next(i, dt))
         omega.append(omega_next(i, dt))
@@ -40,4 +39,4 @@ def simulate(index, dt, itor):
         error.append(an.test(theta[i], omega[i], index))
     # Dump data into CSV file for data analysis
     DF = pd.DataFrame([theta, omega, error])
-    DF.to_csv(r"./data/e_" + str(index) + ".csv")
+    DF.to_csv(r"./data/e_" + str(index) + "_" + str(itor) + ".csv")
