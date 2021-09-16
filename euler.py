@@ -36,6 +36,7 @@ def simulate(index, dt=0.02, itor=0):
     # Add initial values
     theta.append(angle[index])
     alpha.append(alpha_next(0))
+    error.append(0)
     for i in range(N):
         theta.append(theta_next(i, dt))
         omega.append(omega_next(i, dt))
