@@ -2,7 +2,6 @@
 # V 0.2.0
 import pandas as pd
 import numpy as np
-import period
 
 # Initialize constants
 L = 1
@@ -33,7 +32,6 @@ def simulate(index, n=200):
     theta.append(angle[index])
     alpha.append(alpha_next(0))
     for i in range(n):
-        print(i)
         theta.append(theta_next(i))
         omega.append(omega_next(i))
         alpha.append(alpha_next(i))

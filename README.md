@@ -21,10 +21,13 @@ Write a program for the Leap-Frog method
 ## TODO
 Note that this only includes programming
 - [x] Calculate Period
-- [ ] Euler's Method
+- [x] Euler's Method
 - [ ] Leap-Frog Method
 
 ## Notes on programs
 ### Period.py
 After a bit of testing I have determined that for period.py an ideal number of iterations (the value of n in the equation) is 100. For each of the values it seems to have at least 6 significant figures when compared to higher values of n.
+
+### Euler.py
+I ended up setting a constant for DT, I might end up changing it around to try and see which values are the best.
 
