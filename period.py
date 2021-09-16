@@ -3,13 +3,8 @@
 
 # Modules
 import numpy as np
+import constants as c
 
-# Initialize constants
-M = 0.5
-L = 1.0
-G = 9.8
-PI = np.pi
-MAX_N = 100
 # This function recursively calculates the sum in K(x)
 def series_sum(x, n, total, most):
     if n > most:
@@ -21,10 +16,9 @@ def series_sum(x, n, total, most):
 def k(x, most=10):
     # Set a_1
     total = x**2 / 4
-    return PI / 2 * (1 + series_sum(x, 1, total, most))
+    return c.PI / 2 * (1 + series_sum(x, 1, total, most))
 
 # Function to calculate period from equation given
-def period(index, most=MAX_N):
-    return 4 * np.sqrt(L/G) * k(np.sin(angle[index]/2), most)
+def period(index, most=c.N):
+    return 4 * np.sqrt(c.L/c.G) * k(np.sin(c.ANGLE[index]/2), most)
 
-angle = [PI/8, PI/4, 3*PI/8, PI/2]
