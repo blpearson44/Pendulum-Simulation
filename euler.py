@@ -28,7 +28,11 @@ def alpha_next(n):
     return - ANG_FREQ**2 * np.sin(theta[n]) 
 
 # Simulation function
-def simulate(index, dt, itor):
+def simulate(index, dt=0.02, itor=0):
+    global theta
+    global omega
+    global alpha
+    global error
     # Add initial values
     theta.append(angle[index])
     alpha.append(alpha_next(0))
@@ -40,3 +44,8 @@ def simulate(index, dt, itor):
     # Dump data into CSV file for data analysis
     DF = pd.DataFrame([theta, omega, error])
     DF.to_csv(r"./data/e_" + str(index) + "_" + str(itor) + ".csv")
+    # Empty arrays so they can be used again
+    theta = []
+    omega = [0]
+    alpha = []
+    error = []

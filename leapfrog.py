@@ -32,6 +32,11 @@ def alpha_next(n):
 
 # Simulation Function
 def simulate(index, dt, itor):
+    # Declare global arrays
+    global theta
+    global omega
+    global alpha
+    global error
     # First init
     theta.append(angle[index])
     alpha.append(alpha_next(0))
@@ -54,3 +59,8 @@ def simulate(index, dt, itor):
     # Dump data into csv file for further analysis
     DF = pd.DataFrame([theta, omega, error])
     DF.to_csv(r"./data/lf_" + str(index) + "_" + str(itor) + ".csv")
+    # Empty arrays so they can be used again
+    theta = []
+    omega = [0]
+    alpha = []
+    error = []
