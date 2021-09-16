@@ -1,5 +1,5 @@
 # Written by Ben Pearson
-# V 1.1.0
+# V 1.1.1
 
 # Modules
 import numpy as np
@@ -25,6 +25,6 @@ def k(x, most=10):
 
 # Function to calculate period from equation given
 def period(index, most=MAX_N):
-    return 4 * (L/G)**(1 / 2) * k(np.sin(angle[index]/2), most)
+    return 4 * np.sqrt(L/G) * k(np.sin(angle[index]/2), most)
 
 angle = [PI/8, PI/4, 3*PI/8, PI/2]
