@@ -1,5 +1,5 @@
 # Written by Ben Pearson
-# V 0.2.0
+# V 0.3.0
 import pandas as pd
 import numpy as np
 
@@ -35,3 +35,11 @@ def simulate(index, n=200):
         theta.append(theta_next(i))
         omega.append(omega_next(i))
         alpha.append(alpha_next(i))
+    # Dump data into CSV file for data analysis
+    DF = pd.DataFrame(theta)
+    DF.to_csv(r"./data/e_theta_" + str(index) + "_" + str(n) + ".csv")
+    DF = pd.DataFrame(omega)
+    DF.to_csv(r"./data/e_omega_" + str(index) + "_" + str(n) + ".csv")
+    DF = pd.DataFrame(alpha)
+    DF.to_csv(r"./data/e_alpha_" + str(index) + "_" + str(n) + ".csv")
+
