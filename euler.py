@@ -3,21 +3,30 @@
 import pandas as pd
 import numpy as np
 import constants as c
-index = 0
+import period as p
+import analyze as an
 
-# Data dictionary
-data = {'theta': [], 'omega': []}
-# Variables to be used in this file
-theta = c.ANGLE[index]
-alpha = - c.ANG_FREQ**2 * np.sin(theta)
-omega = 0
-dt = 0.02
-data['theta'].append(theta)
-data['omega'].append(omega)
-for i in range(c.N):
-    print("Theta\t" + str(theta) + "\t" + "Omega\t" + str(omega))
-    theta = theta + omega * dt
-    omega = omega + dt * alpha
+def simulate(theta_m):
+    # Data dictionary
+    data = {'theta': [], 'omega': [], 'error': []}
+    # Variables to be used in this file
+    theta = theta_m
     alpha = - c.ANG_FREQ**2 * np.sin(theta)
+    omega = 0
+    dt = p.period(theta_m, 100) / 100
     data['theta'].append(theta)
     data['omega'].append(omega)
+    data['error'].append(0)
+    for i in range(1, c.N):
+        print("Theta\t" + str(theta) + "\t" + "Omega\t" + str(omega))
+        theta = theta + omega * dt
+        omega = omega + dt * alpha
+        alpha = - c.ANG_FREQ**2 * np.sin(theta)
+        data['theta'].append(theta)
+        data['omega'].append(omega)
+        data['error'].append(an.test(theta_m, theta, omega))
+    DF = pd.DataFrame(data)
+    DF.to_csv("./data/e_" + str(theta_m) + ".csv")
+
+for i in c.ANGLE:
+    simulate(i)

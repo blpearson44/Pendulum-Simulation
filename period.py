@@ -19,6 +19,6 @@ def k(x, most=10):
     return c.PI / 2 * (1 + series_sum(x, 1, total, most))
 
 # Function to calculate period from equation given
-def period(index, most=c.N):
-    return 4 * np.sqrt(c.L/c.G) * k(np.sin(c.ANGLE[index]/2), most)
+def period(angle, most=c.N):
+    return 4 * np.sqrt(c.L/c.G) * k(np.sin(angle/2), most)
 
