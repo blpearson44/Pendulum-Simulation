@@ -17,6 +17,7 @@ def simulate(theta_m):
     data['theta'].append(theta)
     data['omega'].append(omega)
     data['error'].append(0)
+    # implement euler's method
     for i in range(1, c.N):
         theta = theta + omega * dt
         omega = omega + dt * alpha
