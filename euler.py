@@ -18,7 +18,6 @@ def simulate(theta_m):
     data['omega'].append(omega)
     data['error'].append(0)
     for i in range(1, c.N):
-        print("Theta\t" + str(theta) + "\t" + "Omega\t" + str(omega))
         theta = theta + omega * dt
         omega = omega + dt * alpha
         alpha = - c.ANG_FREQ**2 * np.sin(theta)
